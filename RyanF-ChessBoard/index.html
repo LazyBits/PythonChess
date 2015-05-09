@@ -1,15 +1,19 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="chessApp"</html>
 <head>
 	<title>Flaherty's version</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="BoardCtrl.js"></script>
+	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
 </head>
-	
+
 <body>
+	<div ng-controller="BoardCtrl">
+		{{loadBoard()}}
+	</div>
 	<!--Will need to work on loading correct UTF-8 font for chrome and ie in windows.-->
-	<div style="font-size: 24px">
+	<div style="font-size: 48px">
 	White king: &#9812;<br>
 	White Queen: &#9813;<br>
 	White rook: &#9814;<br>
