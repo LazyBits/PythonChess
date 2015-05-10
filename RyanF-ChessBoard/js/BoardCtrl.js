@@ -61,10 +61,10 @@ function BoardCtrl($scope, $http) {
 	
 	$scope.getTileShading = function(rowIndex, colIndex) {
 		if ((rowIndex+colIndex)%2==1){
-			$("#r"+rowIndex+"c"+colIndex).addClass("dark");
+			$("#r"+rowIndex+"c"+colIndex).addClass("tile-dark");
 		}
 		else{
-			$("#r"+rowIndex+"c"+colIndex).addClass("light");
+			$("#r"+rowIndex+"c"+colIndex).addClass("tile-light");
 		}
 	};
 	

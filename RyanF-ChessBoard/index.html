@@ -18,14 +18,16 @@
 		<!--Build this programatically please...-->
 		<!--need to build programatically so I can set my on clicks-->
 		<!--http://stackoverflow.com/questions/24981322/get-index-of-row-in-table-using-angularjs-->
-		<table style="font-family: dejavu_sans_monobook; font-size: 54px">
-			<tr ng-repeat="rowIndex in [0,1,2,3,4,5,6,7]">
-				<td ng-repeat="colIndex in [0,1,2,3,4,5,6,7]" ng-click="updateBoard(rowIndex,colIndex)" id="r{{rowIndex}}c{{colIndex}}" class="{{getTileShading(rowIndex,colIndex)}}">
+		<div class="board">
+			<div ng-repeat="rowIndex in [0,1,2,3,4,5,6,7]" class="board-row">
+				<div ng-repeat="colIndex in [0,1,2,3,4,5,6,7]" ng-click="updateBoard(rowIndex,colIndex)" id="r{{rowIndex}}c{{colIndex}}" class="tile {{getTileShading(rowIndex,colIndex)}}">
 					{{getPiece(rowIndex,colIndex)}}
-				</td>
-			</tr>
-		</table>
-		{{board}}
+				</div>
+			</div>
+		</div>
+		<div class="board-row">
+			{{board}}
+		</div>
 	</div>
 	<!--Will need to work on loading correct UTF-8 font for chrome and ie in windows.-->
 </body>
