@@ -26,7 +26,6 @@ function getCharacterCode(spot){
 }
 
 function buildBoard(){
-	console.log("wee");
 	$("chessBoardTable")
 		.append($('<tr>')
 			.append($('</tr>')));

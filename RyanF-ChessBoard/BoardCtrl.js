@@ -19,9 +19,23 @@ function BoardCtrl($scope, $http) {
 		return '\xA0';
 	}
 	
+	$scope.updateBoard = function(rowIndex, colIndex) {
+		console.log("Click detected: "+rowIndex+', '+colIndex);
+		if ($scope.lastClicked==null) {
+			$scope.lastClicked={};
+			$scope.lastClicked.row=rowIndex;
+			$scope.lastClicked.col=colIndex;
+			//show the user they clicked it
+			$( "#r"+rowIndex+"c"+colIndex ).css("background-color", "CornflowerBlue");
+		}
+		else{
+			//We will move the last selected piece to the new place and clear the old place and last selected piece.
+			console.log("new place "+$scope.board.rows[rowIndex][colIndex]);
+		}
+	};
+	
 	$scope.loadBoard = function () {
 		//for now build json here so we don't need to serve the page.  In future we will load it form dynamic JSON anyway.  //var board = $http.get("board.json");
-		console.log("it happened!");
 		$scope.board = {
 			//consider converting from rows[] to objects "row1" "row2" etc will allow direct access for getPiece
 			"rows": [
