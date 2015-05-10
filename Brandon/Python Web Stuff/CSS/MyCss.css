@@ -23,7 +23,6 @@ h2 {
 	color: black;
 }
 
-
 .chess-field {
 	flex-basis: auto;
 	height: 120px;
@@ -40,8 +39,6 @@ h2 {
 	margin-right: 75%;
 	font: bold 15px Seriff;	
 	color: blue;
-	border-style: solid;
-	border-width: 2px;
 }
 
 .chess-piece {
@@ -52,6 +49,10 @@ h2 {
 
 .highlight {
     background-color: cyan;
+}
+
+.selected {
+	
 }
 
 /*8
