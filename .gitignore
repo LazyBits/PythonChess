@@ -58,3 +58,6 @@ target/
 
 #VS Code
 .settings
+
+#OS Specific Files
+.DS_Store
