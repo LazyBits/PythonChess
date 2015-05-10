@@ -2,3 +2,15 @@ table, th, td {
    border: 1px solid black;
    cursor: pointer;
 } 
+
+.dark {
+   background: gray;
+}
+
+.light {
+   background: white;
+}
+
+.selected {
+   border: 3px solid red;
+}

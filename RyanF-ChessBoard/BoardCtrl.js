@@ -24,12 +24,12 @@ function BoardCtrl($scope, $http) {
 			$scope.lastClicked.row=rowIndex;
 			$scope.lastClicked.col=colIndex;
 			//show the user they clicked it
-			$( "#r"+rowIndex+"c"+colIndex ).css("background-color", "CornflowerBlue");
+			$( "#r"+rowIndex+"c"+colIndex ).addClass("selected");
 		}
 		//Check we didn't just click the same piece again
 		else if($scope.lastClicked.row==rowIndex && $scope.lastClicked.col==colIndex){
 			//Reset the appearance of the board
-			$( "#r"+$scope.lastClicked.row+"c"+$scope.lastClicked.col ).css("background-color", "White");
+			$( "#r"+$scope.lastClicked.row+"c"+$scope.lastClicked.col ).removeClass("selected");
 			//nullify lastClicked
 			$scope.lastClicked = null;
 		}
@@ -49,12 +49,21 @@ function BoardCtrl($scope, $http) {
 			//Now remove the piece form the old location
 			delete $scope.board["row"+$scope.lastClicked.row]["col"+$scope.lastClicked.col];
 			//Reset the appearance of the board
-			$( "#r"+$scope.lastClicked.row+"c"+$scope.lastClicked.col ).css("background-color", "White");
+			$( "#r"+$scope.lastClicked.row+"c"+$scope.lastClicked.col ).removeClass("selected");
 			//nullify lastClicked
 			$scope.lastClicked = null;
 
 		}
 	};
+	
+	$scope.getTileShading = function(rowIndex, colIndex) {
+		if ((rowIndex+colIndex)%2==1){
+			$("#r"+rowIndex+"c"+colIndex).addClass("dark");
+		}
+		else{
+			$("#r"+rowIndex+"c"+colIndex).addClass("light");
+		}
+	}
 	
 	$scope.loadBoard = function () {
 		//for now build json here so we don't need to serve the page.  In future we will load it form dynamic JSON anyway.  //var board = $http.get("board.json");
