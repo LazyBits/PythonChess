@@ -1,3 +1,6 @@
+/// <reference path="../typings/angularjs/angular.d.ts"/>
+/// <reference path="../typings/jquery/jquery.d.ts"/>
+
 function BoardCtrl($scope, $http) {
 	
 	//Really gross way of iterating through each piece to fin dthe right element.

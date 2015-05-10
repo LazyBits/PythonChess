@@ -1,16 +1,21 @@
 table, th, td {
-   border: 1px solid black;
    cursor: pointer;
 } 
 
 .dark {
    background: gray;
+   width: 75px;
+   height: 75px;
+   text-align: center;
 }
 
 .light {
    background: white;
+   width: 75px;
+   height: 75px;
+   text-align: center;
 }
 
 .selected {
-   border: 3px solid red;
+   background: cornflowerblue !important;
 }

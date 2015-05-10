@@ -24,10 +24,3 @@ var characterCodes =
 function getCharacterCode(spot){
 	return characterCodes[spot.color][spot.type];
 }
-
-function buildBoard(){
-	$("chessBoardTable")
-		.append($('<tr>')
-			.append($('</tr>')));
-}
-buildBoard();
