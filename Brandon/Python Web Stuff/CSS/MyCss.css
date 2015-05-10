@@ -1,0 +1,60 @@
+body {
+	background-color: gray;
+}
+
+h2 {
+	color: navy;
+	margin-left: 20px;
+}
+.chess-matrix {
+	width: 80%;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.chess-row {
+	display: flex;		
+	width: 120px;
+	flex-direction: column-reverse;
+	color: black;
+}
+
+
+.chess-field {
+	flex-basis: auto;
+	height: 120px;
+	width: 100%;
+	color: black;
+	background-color: gray;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.space-identifier {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-right: 75%;
+	font: bold 15px Seriff;	
+	color: blue;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.chess-piece {
+	font: bold 20px Seriff;		
+	margin-left: 35%;	
+	color: black;
+}
+
+.highlight {
+    background-color: cyan;
+}
+
+/*8
+-
+1	
+	a - h*/
