@@ -26,6 +26,13 @@ function BoardCtrl($scope, $http) {
 			//show the user they clicked it
 			$( "#r"+rowIndex+"c"+colIndex ).css("background-color", "CornflowerBlue");
 		}
+		//Check we didn't just click the same piece again
+		else if($scope.lastClicked.row==rowIndex && $scope.lastClicked.col==colIndex){
+			//Reset the appearance of the board
+			$( "#r"+$scope.lastClicked.row+"c"+$scope.lastClicked.col ).css("background-color", "White");
+			//nullify lastClicked
+			$scope.lastClicked = null;
+		}
 		else{
 			//We will move the last selected piece to the new place and clear the old place and last selected piece.
 			//first move the piece to the new location
