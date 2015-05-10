@@ -32,7 +32,6 @@
 .board-row{
   display: block;
   clear: both;
-  no-wrap
 }
 
 .selected {
