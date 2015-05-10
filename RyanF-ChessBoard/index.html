@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="BoardCtrl.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css"></link>	
+	<link rel="stylesheet" href="css/loadFonts.css" type="text/css" charset="utf-8" />
 	<link rel="stylesheet" type="css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
@@ -17,9 +18,9 @@
 		<!--Build this programatically please...-->
 		<!--need to build programatically so I can set my on clicks-->
 		<!--http://stackoverflow.com/questions/24981322/get-index-of-row-in-table-using-angularjs-->
-		<table style="font-size: 48px">
+		<table style="font-family: dejavu_sans_monobook; font-size: 48px">
 			<tr ng-repeat="rowIndex in [0,1,2,3,4,5,6,7]">
-				<td ng-repeat="colIndex in [0,1,2,3,4,5,6,7]" ng-click="updateBoard(rowIndex,colIndex)" id="r{{rowIndex}}c{{colIndex}}">
+				<td ng-repeat="colIndex in [0,1,2,3,4,5,6,7]" ng-click="updateBoard(rowIndex,colIndex)" id="r{{rowIndex}}c{{colIndex}}" style="width:height">
 					{{getPiece(rowIndex,colIndex)}}
 				</td>
 			</tr>
