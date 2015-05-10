@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Flaherty's version</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="BoardCtrl.js"></script>
-	<script type="text/javascript" src="board.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css"></link>	
-	<!--
 	<link rel="stylesheet" type="css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		-->
+
 </head>
 
 <body>
@@ -19,86 +19,9 @@
 		<!--need to build programatically so I can set my on clicks-->
 		<!--http://stackoverflow.com/questions/24981322/get-index-of-row-in-table-using-angularjs-->
 		<table>
-		<tr>
-			<td>{{getPiece(0,0)}}</td>
-			<td>{{getPiece(0,1)}}</td>
-			<td>{{getPiece(0,2)}}</td>
-			<td>{{getPiece(0,3)}}</td>
-			<td>{{getPiece(0,4)}}</td>
-			<td>{{getPiece(0,5)}}</td>
-			<td>{{getPiece(0,6)}}</td>
-			<td>{{getPiece(0,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(1,0)}}</td>
-			<td>{{getPiece(1,1)}}</td>
-			<td>{{getPiece(1,2)}}</td>
-			<td>{{getPiece(1,3)}}</td>
-			<td>{{getPiece(1,4)}}</td>
-			<td>{{getPiece(1,5)}}</td>
-			<td>{{getPiece(1,6)}}</td>
-			<td>{{getPiece(1,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(2,0)}}</td>
-			<td>{{getPiece(2,1)}}</td>
-			<td>{{getPiece(2,2)}}</td>
-			<td>{{getPiece(2,3)}}</td>
-			<td>{{getPiece(2,4)}}</td>
-			<td>{{getPiece(2,5)}}</td>
-			<td>{{getPiece(2,6)}}</td>
-			<td>{{getPiece(2,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(3,0)}}</td>
-			<td>{{getPiece(3,1)}}</td>
-			<td>{{getPiece(3,2)}}</td>
-			<td>{{getPiece(3,3)}}</td>
-			<td>{{getPiece(3,4)}}</td>
-			<td>{{getPiece(3,5)}}</td>
-			<td>{{getPiece(3,6)}}</td>
-			<td>{{getPiece(3,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(4,0)}}</td>
-			<td>{{getPiece(4,1)}}</td>
-			<td>{{getPiece(4,2)}}</td>
-			<td>{{getPiece(4,3)}}</td>
-			<td>{{getPiece(4,4)}}</td>
-			<td>{{getPiece(4,5)}}</td>
-			<td>{{getPiece(4,6)}}</td>
-			<td>{{getPiece(4,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(5,0)}}</td>
-			<td>{{getPiece(5,1)}}</td>
-			<td>{{getPiece(5,2)}}</td>
-			<td>{{getPiece(5,3)}}</td>
-			<td>{{getPiece(5,4)}}</td>
-			<td>{{getPiece(5,5)}}</td>
-			<td>{{getPiece(5,6)}}</td>
-			<td>{{getPiece(5,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(6,0)}}</td>
-			<td>{{getPiece(6,1)}}</td>
-			<td>{{getPiece(6,2)}}</td>
-			<td>{{getPiece(6,3)}}</td>
-			<td>{{getPiece(6,4)}}</td>
-			<td>{{getPiece(6,5)}}</td>
-			<td>{{getPiece(6,6)}}</td>
-			<td>{{getPiece(6,7)}}</td>
-		</tr>
-		<tr>
-			<td>{{getPiece(7,0)}}</td>
-			<td>{{getPiece(7,1)}}</td>
-			<td>{{getPiece(7,2)}}</td>
-			<td>{{getPiece(7,3)}}</td>
-			<td>{{getPiece(7,4)}}</td>
-			<td>{{getPiece(7,5)}}</td>
-			<td>{{getPiece(7,6)}}</td>
-			<td>{{getPiece(7,7)}}</td>
-		</tr>
+			<tr ng-repeat="rowIndex in [0,1,2,3,4,5,6,7]">
+				<td ng-repeat="colIndex in [0,1,2,3,4,5,6,7]">{{getPiece(rowIndex,colIndex)}}</td>
+			</tr>
 		</table>
 
 		

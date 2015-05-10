@@ -1,3 +1,4 @@
+/// <reference path="../typings/jquery/jquery.d.ts"/>
 var characterCodes = 
 {
 	"white":
@@ -23,3 +24,11 @@ var characterCodes =
 function getCharacterCode(spot){
 	return characterCodes[spot.color][spot.type];
 }
+
+function buildBoard(){
+	console.log("wee");
+	$("chessBoardTable")
+		.append($('<tr>')
+			.append($('</tr>')));
+}
+buildBoard();
