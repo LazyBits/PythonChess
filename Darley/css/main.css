@@ -1,0 +1,20 @@
+.darkSpace
+{
+  width: 75px;
+  height: 75px;
+  background-color: #800000;
+  float: left;
+}
+
+.lightSpace
+{
+  width: 75px;
+  height: 75px;
+  background-color: #CCCCCC;
+  float: left;
+}
+.boardRow
+{
+  display: block;
+  clear: both;
+}
