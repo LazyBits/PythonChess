@@ -6,23 +6,23 @@ function BoardCtrl($scope, $http) {
 	//Really gross way of iterating through each piece to fin dthe right element.
 	$scope.getPiece = function (rowNum, colNum) {
 		var row = $scope.board["row"+rowNum];
-		if (typeof row === 'undefined') {
-			return '\xA0';
+		if (typeof row === 'undefined') { //TODO maybe i shuold check for null here?
+			return '\xA0'; //--return JS version of &nbsp
 		}
 		else{
 			var col = row["col"+colNum];
-			if (typeof col === 'undefined') {
-				return '\xA0';
+			if (typeof col === 'undefined') { //TODO maybe i shuold check for null here?
+				return '\xA0'; //--return JS version of &nbsp
 			}
 			else {
 				return getCharacterCode(col);
 			}
 		}
-	}
+	};
 	
 	$scope.updateBoard = function(rowIndex, colIndex) {
 		console.log("Click detected: "+rowIndex+', '+colIndex);
-		if ($scope.lastClicked==null) {
+		if ($scope.lastClicked==null) { //TODO maybe I shoudl check for undefined here
 			$scope.lastClicked={};
 			$scope.lastClicked.row=rowIndex;
 			$scope.lastClicked.col=colIndex;
@@ -66,7 +66,7 @@ function BoardCtrl($scope, $http) {
 		else{
 			$("#r"+rowIndex+"c"+colIndex).addClass("light");
 		}
-	}
+	};
 	
 	$scope.loadBoard = function () {
 		//for now build json here so we don't need to serve the page.  In future we will load it form dynamic JSON anyway.  //var board = $http.get("board.json");
@@ -208,7 +208,7 @@ function BoardCtrl($scope, $http) {
 					"color": "white"
 				}
 			}
-		}
+		};
 	};
 	//Make sure loadBoard runs on load.  probably a bit hacky also
 	$scope.loadBoard();
