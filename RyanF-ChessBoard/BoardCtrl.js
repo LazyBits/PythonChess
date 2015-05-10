@@ -1,22 +1,20 @@
 function BoardCtrl($scope, $http) {
 	
 	//Really gross way of iterating through each piece to fin dthe right element.
-	$scope.getPiece = function (rowNum, spotNum) {
-		var rows = $scope.board.rows;
-		for (var rowIndex in rows) {
-			var row = rows[rowIndex];
-			if (row["rowID"] == rowNum) {
-				var spots = row.spots;
-				for (var spotIndex in spots) {
-					var spot = spots[spotIndex];
-					if (spot["spotID"] == spotNum) {
-						return getCharacterCode(spot);
-					}
-				}
+	$scope.getPiece = function (rowNum, colNum) {
+		var row = $scope.board["row"+rowNum];
+		if (typeof row === 'undefined') {
+			return '\xA0';
+		}
+		else{
+			var col = row["col"+colNum];
+			if (typeof col === 'undefined') {
 				return '\xA0';
 			}
+			else {
+				return getCharacterCode(col);
+			}
 		}
-		return '\xA0';
 	}
 	
 	$scope.updateBoard = function(rowIndex, colIndex) {
@@ -30,7 +28,24 @@ function BoardCtrl($scope, $http) {
 		}
 		else{
 			//We will move the last selected piece to the new place and clear the old place and last selected piece.
-			console.log("new place "+$scope.board.rows[rowIndex][colIndex]);
+			//first move the piece to the new location
+			var piece = $scope.board["row"+$scope.lastClicked.row]["col"+$scope.lastClicked.col];
+			//check for null in new location
+			if (typeof $scope.board["row"+rowIndex]==='undefined'){
+				$scope.board["row"+rowIndex] = {};
+			}
+			if (typeof $scope.board["row"+rowIndex]["col"+colIndex] === 'undefined'){
+				$scope.board["row"+rowIndex]["col"+colIndex] = {};
+			}
+			$scope.board["row"+rowIndex]["col"+colIndex].type = piece.type;
+			$scope.board["row"+rowIndex]["col"+colIndex].color = piece.color;
+			//Now remove the piece form the old location
+			delete $scope.board["row"+$scope.lastClicked.row]["col"+$scope.lastClicked.col];
+			//Reset the appearance of the board
+			$( "#r"+$scope.lastClicked.row+"c"+$scope.lastClicked.col ).css("background-color", "White");
+			//nullify lastClicked
+			$scope.lastClicked = null;
+
 		}
 	};
 	
@@ -38,226 +53,143 @@ function BoardCtrl($scope, $http) {
 		//for now build json here so we don't need to serve the page.  In future we will load it form dynamic JSON anyway.  //var board = $http.get("board.json");
 		$scope.board = {
 			//consider converting from rows[] to objects "row1" "row2" etc will allow direct access for getPiece
-			"rows": [
-				{
-					"rowID": "0",
-					"spots": [
-						{
-							"spotID": "0",
-							"type": "rook",
-							"color": "black"
-						},
-						{
-							"spotID": "1",
-							"type": "knight",
-							"color": "black"
-						},
-						{
-							"spotID": "2",
-							"type": "bishop",
-							"color": "black"
-						},
-						{
-							"spotID": "3",
-							"type": "queen",
-							"color": "black"
-						},
-						{
-							"spotID": "4",
-							"type": "king",
-							"color": "black"
-						},
-						{
-							"spotID": "5",
-							"type": "bishop",
-							"color": "black"
-						},
-						{
-							"spotID": "6",
-							"type": "knight",
-							"color": "black"
-						},
-						{
-							"spotID": "7",
-							"type": "rook",
-							"color": "black"
-						}
-					]
+			"row0": {
+				"col0": {
+					"type": "rook",
+					"color": "black"
 				},
-				{
-					"rowID": "1",
-					"spots": [
-						{
-							"spotID": "0",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "1",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "2",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "3",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "4",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "5",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "6",
-							"type": "pawn",
-							"color": "black"
-						},
-						{
-							"spotID": "7",
-							"type": "pawn",
-							"color": "black"
-
-						}
-					]
+				"col1": {
+					"type": "knight",
+					"color": "black"
 				},
-				//				{	"rowID":"2",
-				//					"spots":[
-				//						{
-				//							"spotID":"0",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"1",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"2",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"3",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"4",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"5",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"6",
-				//							"type":"none"
-				//						},
-				//						{
-				//							"spotID":"7",
-				//							"type":"none"
-				//						}
-				//					]
-				//				},
-				{
-					"rowID": "6",
-					"spots": [
-						{
-							"spotID": "0",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "1",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "2",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "3",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "4",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "5",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "6",
-							"type": "pawn",
-							"color": "white"
-						},
-						{
-							"spotID": "7",
-							"type": "pawn",
-							"color": "white"
-						}
-					]
+				"col2": {
+					"type": "bishop",
+					"color": "black"
 				},
-				{
-					"rowID": "7",
-					"spots": [
-						{
-							"spotID": "0",
-							"type": "rook",
-							"color": "white"
-						},
-						{
-							"spotID": "1",
-							"type": "knight",
-							"color": "white"
-						},
-						{
-							"spotID": "2",
-							"type": "bishop",
-							"color": "white"
-						},
-						{
-							"spotID": "3",
-							"type": "queen",
-							"color": "white"
-						},
-						{
-							"spotID": "4",
-							"type": "king",
-							"color": "white"
-						},
-						{
-							"spotID": "5",
-							"type": "bishop",
-							"color": "white"
-						},
-						{
-							"spotID": "6",
-							"type": "knight",
-							"color": "white"
-						},
-						{
-							"spotID": "7",
-							"type": "rook",
-							"color": "white"
-						}
-					]
+				"col3": {
+					"type": "queen",
+					"color": "black"
+				},
+				"col4": {
+					"type": "king",
+					"color": "black"
+				},
+				"col5": {
+					"type": "bishop",
+					"color": "black"
+				},
+				"col6": {
+					"type": "knight",
+					"color": "black"
+				},
+				"col7": {
+					"type": "rook",
+					"color": "black"
 				}
-			]
-		};
+			},
+			"row1": {
+				"col0": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col1": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col2": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col3": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col4": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col5": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col6": {
+					"type": "pawn",
+					"color": "black"
+				},
+				"col7": {
+					"type": "pawn",
+					"color": "black"
+				}
+			},
+			"row6": {
+				"col0": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col1": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col2": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col3": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col4": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col5": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col6": {
+					"type": "pawn",
+					"color": "white"
+				},
+				"col7": {
+					"type": "pawn",
+					"color": "white"
+				}
+			},
+			"row7": {
+				"col0": {
+					"type": "rook",
+					"color": "white"
+				},
+				"col1": {
+					"type": "knight",
+					"color": "white"
+				},
+				"col2": {
+					"type": "bishop",
+					"color": "white"
+				},
+				"col3": {
+					"type": "queen",
+					"color": "white"
+				},
+				"col4": {
+					"type": "king",
+					"color": "white"
+				},
+				"col5": {
+					"type": "bishop",
+					"color": "white"
+				},
+				"col6": {
+					"type": "knight",
+					"color": "white"
+				},
+				"col7": {
+					"type": "rook",
+					"color": "white"
+				}
+			}
+		}
 	};
 	//Make sure loadBoard runs on load.  probably a bit hacky also
 	$scope.loadBoard();
