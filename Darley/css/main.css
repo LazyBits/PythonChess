@@ -18,3 +18,17 @@
   display: block;
   clear: both;
 }
+.whitePiece
+{
+  text-align: center;
+  color: white;
+  line-height: 40px;
+  font-weight: bold;
+}
+.blackPiece
+{
+  text-align: center;
+  color: black;
+  line-height: 40px;
+  font-weight: bold;
+}
