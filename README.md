@@ -11,3 +11,7 @@ Plans
   Step 2: Serve from django and send deltas to API & Persist ~~deltas~~ whole board state in  game in DB.  
   step 3: Validate moves.  
   Step 4: Make games session based.  
+
+Stuff to use:
+https://www.djangoproject.com/
+http://www.django-rest-framework.org/
